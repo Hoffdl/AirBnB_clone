@@ -84,7 +84,6 @@ class HBNBCommand(Cmd):
         args, n = parse(arg)
 
         if not n:
-        if not n:
             print("** class name missing **")
         elif n == 1:
             print("** instance id missing **")
