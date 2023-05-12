@@ -11,9 +11,9 @@ from typing import List
 class Place(BaseModel):
     """The Place Model"""
 
-    #Attributes
+    # Attributes
     city_id: str = ""
-    user_id: sty = ""
+    user_id: str = ""
     name: str = ""
     description: str = ""
     number_rooms: int = 0
