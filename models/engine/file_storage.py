@@ -76,7 +76,7 @@ class FileStorage:
 
         if model and model not in FileStorage.models:
             raise ModuleNotFoundError(model)
-        
+
         lst = []
         for key, dic in FileStorage.__objects.items():
             if key.startswith(model):
@@ -94,13 +94,13 @@ class FileStorage:
 
         if model and model not in FileStorage.models:
             raise ModuleNotFoundError(model)
-        
+
         _key = model + '.' + obj_id
         if _key not in FileStorage.__objects:
             raise InstanceNotFoundError(obj_id, model)
-        
+
         return FileStorage.__objects[_key]
-    
+
     def delete_by_id(self, model, obj_id):
         """ finds and delete the elements of a model by id
         Args:
@@ -108,14 +108,14 @@ class FileStorage:
             obj_id: instance id to delete
         """
 
-        F = FileStorage #ALIAS
+        F = FileStorage  # ALIAS
         if model and model not in F.models:
             raise ModuleNotFoundError(model)
-        
+
         _key = model + '.' + obj_id
         if _key not in F.__objects:
             raise InstanceNotFoundError(obj_id, model)
-        
+
         del F.__objects[_key]
         self.save()
 
@@ -128,18 +128,23 @@ class FileStorage:
             value: value to be added/inserted into field
         """
 
-        F = FileStorage #ALIAS
+        F = FileStorage  # ALIAS
         if model and model not in F.models:
             raise ModuleNotFoundError(model)
-        
+
         _key = model + '.' + obj_id
         if _key not in F.__objects:
             raise InstanceNotFoundError(obj_id, model)
         if field in ['id', 'created_at', 'updated_at']:
             return
-        
+
         inst = F.__objects[_key]
-        if hasattr(inst, field):
-            vtype = type(getattr(inst, field))(value)
-            setattr(inst, field, value)
+        try:
+            # check if attribute exists and type
+            vtype = type(inst.__dict__[field])
+            inst.__dict__[field] = vtype(value)
+        except KeyError:
+            # if attr doesnt exist insert into inst
+            inst.__dict__[field] = value
+        finally:
             inst.save()
