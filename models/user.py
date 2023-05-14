@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """The file defines the UserModel class
 It inherits from the BaseModel
 """
