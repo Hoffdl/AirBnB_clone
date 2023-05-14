@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """This file defines the City Model
 It inherits from the BaseModel
 """
