@@ -80,3 +80,42 @@ Documented commands (type help <topic>):
 EOF  help  quit
 (hbnb)
 
+## 0x04 Testing
+***
+
+All the test are defined in the tests folder.
+
+### Documentation
+ +Modules:
+
+ python3 -c 'print(__import
+
+ + Classes
+
+ python3 -c 'print(__import
+
+ + Functions(inside and outside a class):
+
+## Python Unit Tests
+
++ unittest module
++ File extension .py
++ Files and folders star with test_
++ Organization:for models/base.py, unit tests in: tests/test_models/test_base.py
++ Execution command: python3 -m unittest discover tests 
++ or: python3 -m unittest tests/test_models/test_base.py
+
+### run test in interactive mode
+
+echo "python3 -m unittest
+
+### run test in non-interactive mode
+
+To run the tests in non-interactive mode, and discover all the test, you can use the command:
+
+python3 -m unittest discov
+
+## 0x05 Usage
+
++ Start the console in interactive mode:
+
